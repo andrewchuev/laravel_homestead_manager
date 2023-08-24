@@ -51,6 +51,48 @@ class HomesteadConfigController extends Controller
         return redirect()->route('config.index')->with('success', 'Site added successfully!');
     }
 
+    public function edit($key)
+    {
+        $config = Yaml::parseFile($this->configPath);
+        $site = $config['sites'][$key] ?? null;
+        $folder = $config['folders'][$key] ?? null;
+        $database = $config['databases'][$key] ?? null;
+
+        if (!$site || !$folder || !$database) {
+            return redirect()->route('config.index')->with('error', 'Site not found!');
+        }
+
+        return view('config.edit', [
+            'key' => $key,
+            'site' => $site,
+            'folder' => $folder,
+            'database' => $database
+        ]);
+    }
+
+    public function update(Request $request, $key)
+    {
+        $config = Yaml::parseFile($this->configPath);
+
+        // Обновляем данные
+        $config['folders'][$key] = [
+            'map' => $request->input('folderMap'),
+            'to' => $request->input('foldersTo')
+        ];
+
+        $config['sites'][$key] = [
+            'map' => $request->input('sitesMap'),
+            'to' => $request->input('sitesTo'),
+            'php' => $request->input('phpVersion')
+        ];
+
+        $config['databases'][$key] = $request->input('dbName');
+
+        file_put_contents($this->configPath, Yaml::dump($config, 4, 2));
+
+        return redirect()->route('config.index')->with('success', 'Site updated successfully!');
+    }
+
     public function destroy($key)
     {
         $config = Yaml::parseFile($this->configPath);

@@ -27,12 +27,15 @@
             <td>{{ $site['to'] }}</td>
             <td>{{ $site['php'] }}</td>
             <td>{{ $config['databases'][$key] ?? '' }}</td>
+
             <td>
+
                 <form action="{{ route('config.destroy', $key) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Удалить</button>
                 </form>
+                <a href="{{ route('config.edit', $key) }}">Редактировать</a>
             </td>
         </tr>
     @endforeach
