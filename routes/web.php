@@ -16,5 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource( '/config',  HomesteadConfigController::class );
 
-//Route::get('/config/{key}/edit', 'HomesteadConfigController@edit')->name('config.edit');
-//Route::put('/config/{key}', 'HomesteadConfigController@update')->name('config.update');
+
