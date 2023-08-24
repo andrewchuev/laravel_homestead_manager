@@ -11,7 +11,7 @@ class HomesteadConfigController extends Controller
 
     public function __construct()
     {
-        $this->configPath = base_path('Homestead_small.yaml');
+        $this->configPath = base_path(getenv('HOMESTEAD_YAML_PATH'));
     }
 
     public function index()
@@ -23,7 +23,7 @@ class HomesteadConfigController extends Controller
 
     public function create()
     {
-        return view('config.add-site');
+        return view('config.create');
     }
 
     public function store(Request $request)
