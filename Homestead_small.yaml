@@ -1,0 +1,69 @@
+networks:
+  -
+    type: public_network
+    ip: 192.168.88.56
+    bridge: 'Intel(R) Ethernet Connection (14) I219-V'
+memory: 8192
+cpus: 4
+provider: virtualbox
+authorize: ~/.ssh/id_ed25519.pub
+keys:
+  - ~/.ssh/id_ed25519
+folders:
+  -
+    map: 'D:\Projects\Learning\Laravel\laravel-queue.local'
+    to: /home/vagrant/projects/learning/laravel/laravel-queue.local
+  -
+    map: 'D:\Projects\Learning\E-Store\backend'
+    to: /home/vagrant/projects/learning/e-store/backend
+  -
+    map: 'D:\Projects\Learning\Laravel\orchid.local'
+    to: /home/vagrant/projects/learning/laravel/orchid.local
+  -
+    map: zz
+    to: zz
+  -
+    map: 'D:\Projects\Learning\Laravel\laravel-test.local'
+    to: /home/vagrant/projects/learning/laravel/laravel-test.local
+sites:
+  -
+    map: laravel-queue.local
+    to: /home/vagrant/projects/learning/laravel/laravel-queue.local/public
+    php: '8.2'
+  -
+    map: e-store.local
+    to: /home/vagrant/projects/learning/e-store/backend/public
+    php: '8.1'
+  -
+    map: orchid.local
+    to: /home/vagrant/projects/learning/laravel/orchid.local/public
+    php: '8.2'
+  -
+    map: zz
+    to: zz
+    php: zz
+  -
+    map: laravel-test.local
+    to: /home/vagrant/projects/learning/laravel/laravel-test.local/public
+    php: '8.2'
+databases:
+  - laravel-queue
+  - estore
+  - orchid
+  - zz
+  - laravel-test
+features:
+  -
+    mysql: true
+  -
+    mariadb: false
+  -
+    postgresql: true
+  -
+    ohmyzsh: false
+  -
+    webdriver: false
+services:
+  -
+    enabled:
+      - mysql
