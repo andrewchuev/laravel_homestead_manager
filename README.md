@@ -11,6 +11,7 @@ Features
 ## Installation
 
 Clone the Repository:
+
     git clone https://github.com/andrewchuev/laravel_homestead_manager
 
 Install Dependencies:
