@@ -20,16 +20,16 @@ folders:
     map: 'D:\Projects\Learning\Laravel\orchid.local'
     to: /home/vagrant/projects/learning/laravel/orchid.local
   -
-    map: zz1
-    to: zz1
-  -
     map: 'D:\Projects\Learning\Laravel\laravel-test.local'
     to: /home/vagrant/projects/learning/laravel/laravel-test.local
+  -
+    map: 'D:\Projects\Learning\Laravel\test_01.local'
+    to: /home/vagrant/projects/learning/laravel/test_01.local
 sites:
   -
     map: laravel-queue.local
     to: /home/vagrant/projects/learning/laravel/laravel-queue.local/public
-    php: '8.2'
+    php: '7.4'
   -
     map: e-store.local
     to: /home/vagrant/projects/learning/e-store/backend/public
@@ -39,19 +39,19 @@ sites:
     to: /home/vagrant/projects/learning/laravel/orchid.local/public
     php: '8.2'
   -
-    map: zz1
-    to: zz1
-    php: zz1
-  -
     map: laravel-test.local
     to: /home/vagrant/projects/learning/laravel/laravel-test.local/public
+    php: '8.2'
+  -
+    map: test_01.local
+    to: /home/vagrant/projects/learning/laravel/test_01.local/public
     php: '8.2'
 databases:
   - laravel-queue
   - estore
   - orchid
-  - zz1
   - laravel-test
+  - test_01
 features:
   -
     mysql: true

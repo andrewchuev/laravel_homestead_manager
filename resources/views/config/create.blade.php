@@ -1,41 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Site</title>
-    @vite(['resources/js/app.js'])
-</head>
-<body>
-<form action="{{ route('config.store') }}" method="post">
-    @csrf
-    <div>
-        <label>Folder Map:</label>
-        <input type="text" name="folderMap">
+@extends('layouts.app')
+@section('content')
+    <div class="row mt-4">
+        <div class="col">
+            <form action="{{ route('config.store') }}" method="post">
+                @csrf
+                <div class="mb-3">
+                    <label for="sitesMap" class="form-label">Sites Map:</label>
+                    <input id="sitesMap" class="form-control" type="text" name="sitesMap" value="test_01.local">
+                </div>
+                <div class="mb-3">
+                    <label for="folderMap" class="form-label">Folder Map:</label>
+                    <input id="folderMap" class="form-control" type="text" name="folderMap" value="D:\Projects\Learning\Laravel\test_01.local">
+                </div>
+                <div class="mb-3">
+                    <label for="foldersTo" class="form-label">Folders To:</label>
+                    <input id="foldersTo" class="form-control" type="text" name="foldersTo" value="/home/vagrant/projects/learning/laravel/test_01.local">
+                </div>
+
+                <div class="mb-3">
+                    <label for="sitesTo" class="form-label">Sites To:</label>
+                    <input id="sitesTo" class="form-control" type="text" name="sitesTo" value="/home/vagrant/projects/learning/laravel/test_01.local/public">
+                </div>
+                <div class="mb-3">
+                    <label for="phpVersion" class="form-label">PHP Version:</label>
+                    <select name="phpVersion" id="phpVersion" class="form-control">
+                        <?php
+                        $versions = [ '8.2', '8.1', '7.4' ];
+                        foreach ( $versions as $v ) {
+                            ?>
+                        <option value="<?= $v ?>"><?= $v ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="dbName" class="form-label">Database Name:</label>
+                    <input id="dbName" class="form-control" type="text" name="dbName" value="test_01">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Add Site</button>
+                </div>
+            </form>
+
+        </div>
     </div>
-    <div>
-        <label>Folders To:</label>
-        <input type="text" name="foldersTo">
-    </div>
-    <div>
-        <label>Sites Map:</label>
-        <input type="text" name="sitesMap">
-    </div>
-    <div>
-        <label>Sites To:</label>
-        <input type="text" name="sitesTo">
-    </div>
-    <div>
-        <label>PHP Version:</label>
-        <input type="text" name="phpVersion">
-    </div>
-    <div>
-        <label>Database Name:</label>
-        <input type="text" name="dbName">
-    </div>
-    <div>
-        <button type="submit">Add Site</button>
-    </div>
-</form>
-</body>
-</html>
+@endsection
